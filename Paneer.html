@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+    <style>
+      .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .registrationForm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        height: 100px;
+        border: 10px solid black;
+        fill: white;
+        left: 100px;
+        stroke: black;
+        stroke-width: 100;
+        margin: 20px 0px 40px;
+        background: #cffffe;
+        background: linear-gradient(to top, rgba(207, 255, 254, 0.3), rgba(249, 247, 217, 0.3), rgba(252, 226, 206, 0.3), rgba(255, 193, 243, 0.3));
+        border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23cffffe' /%3E%3Cstop offset='25%25' stop-color='%23f9f7d9' /%3E%3Cstop offset='50%25' stop-color='%23fce2ce' /%3E%3Cstop offset='100%25' stop-color='%23ffc1f3' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3'/%3E %3C/svg%3E") 1;
+      }
+
+      .animated_name_ltr,
+      .animated_name_rtl {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family:  "Lobster", cursive;
+        width: 90px;
+        height: 80px;
+        background: #92b901;
+        color: #ffffff;
+        position: relative;
+        font-weight: bold;
+        font-size: 30px;
+        padding: 10px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+      }
+      .animated_name_ltr {
+        animation: animated_name_ltr 5s ease-in-out 1s infinite;
+        -moz-animation: animated_name_ltr 5s ease-in-out 1s infinite;
+        -webkit-animation: animated_name_ltr 5s ease-in-out 1s infinite;
+        -o-animation: animated_name_ltr 5s ease-in-out 1s infinite;
+      }
+      .animated_name_rtl {
+        animation: animated_name_rtl 5s ease-in-out 1s infinite;
+        -moz-animation: animated_name_rtl 5s ease-in-out 1s infinite;
+        -webkit-animation: animated_name_rtl 5s ease-in-out 1s infinite;
+        -o-animation: animated_name_rtl 5s ease-in-out 1s infinite;
+      }
+
+      @keyframes animated_name_rtl {
+        0% {
+          transform: rotate(0deg);
+          left: 0px;
+        }
+        25% {
+          transform: rotate(-20deg);
+          left: 0px;
+        }
+        50% {
+          transform: rotate(0deg);
+          left: -450px;
+        }
+        55% {
+          transform: rotate(0deg);
+          left: -450px;
+        }
+        70% {
+          transform: rotate(0deg);
+          left: -450px;
+          background: #1ec7e6;
+        }
+        100% {
+          transform: rotate(360deg);
+          left: 0px;
+        }
+      }
+
+      @keyframes animated_name_ltr {
+        0% {
+          transform: rotate(0deg);
+          left: 0px;
+        }
+        25% {
+          transform: rotate(20deg);
+          left: 0px;
+        }
+        50% {
+          transform: rotate(0deg);
+          left: 450px;
+        }
+        55% {
+          transform: rotate(0deg);
+          left: 450px;
+        }
+        70% {
+          transform: rotate(0deg);
+          left: 450px;
+          background: #1ec7e6;
+        }
+        100% {
+          transform: rotate(-360deg);
+          left: 0px;
+        }
+      }
+      #text {
+        position: absolute;
+        z-index: 3;
+        margin-left: 27px;
+        margin-top: -15px;
+        color: white;
+        font-weight: bold;
+        font-size: 30px;
+        font-family: "Lobster", cursive;
+      }
+      #heart {
+        position: relative;
+        width: 100px;
+        height: 80px;
+        animation: beat 0.25s infinite alternate;
+      }
+      .love_wrapper {
+        display: flex;
+        align-items: center;
+      }
+
+      #heart:before,
+      #heart:after {
+        position: absolute;
+        content: "";
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background: #f00000;
+        -moz-border-radius: 50px 50px 0 0;
+        border-radius: 50px 50px 0 0;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transform-origin: 0 100%;
+        -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+        -o-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+      }
+
+      #heart:after {
+        left: 0;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transform-origin: 100% 100%;
+        -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+        -o-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+      }
+      @keyframes beat {
+        to {
+          transform: scale(1.4);
+        }
+      }
+
+      /* toggle button */
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 22px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .toggleSlider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      .toggleSlider:before {
+        position: absolute;
+        content: "";
+        height: 13px;
+        width: 13px;
+        left: 4px;
+        bottom: 5px;
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      input:checked + .toggleSlider {
+        background-color: #2196f3;
+      }
+
+      input:focus + .toggleSlider {
+        box-shadow: 0 0 1px #2196f3;
+      }
+
+      input:checked + .toggleSlider:before {
+        -webkit-transform: translateX(20px);
+        -ms-transform: translateX(20x);
+        transform: translateX(20px);
+      }
+
+      /* Rounded sliders */
+      .toggleSlider.round {
+        border-radius: 34px;
+      }
+
+      .toggleSlider.round:before {
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="animated_name_ltr"><span>Sameer</span></div>
+        <div class="love_wrapper">
+          <div id="text">Love</div>
+          <div id="heart"></div>
+        </div>
+        <div class="animated_name_rtl"><span>Parul</span></div>
+      </div>
+      <form name="registrationForm" class="registrationForm">
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="30" class="slider" id="myRange" />
+          <p style="text-align: center; margin: 0px 0px 20px; color: red; font-size: 20px;">&#x2665;<span id="demo"></span>&#x2665;</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" checked />
+          <span class="toggleSlider round"></span>
+        </label>
+      </form>
+    </div>
+
+    <script>
+      const slider = document.getElementById("myRange");
+      const output = document.getElementById("demo");
+      const animatedNameLtr = document.querySelector(".animated_name_ltr");
+      const animatedNameRtl = document.querySelector(".animated_name_rtl");
+      const checkboxEl = document.querySelector(".switch input");
+
+      output.innerHTML = slider.value;
+
+      slider.addEventListener("input", () => {
+        output.innerHTML = slider.value;
+        animatedNameLtr.style.animation = `animated_name_ltr ${11 - slider.value / 10}s ease-in-out 1s infinite`;
+        animatedNameRtl.style.animation = `animated_name_rtl ${11 - slider.value / 10}s ease-in-out 1s infinite`;
+      });
+
+      checkboxEl.addEventListener("change", () => {
+        if (checkboxEl.checked) {
+          animatedNameLtr.style.animationPlayState = "running";
+          animatedNameRtl.style.animationPlayState = "running";
+        } else {
+          animatedNameLtr.style.animationPlayState = "paused";
+          animatedNameRtl.style.animationPlayState = "paused";
+        }
+      });
+    </script>
+  </body>
+</html>
