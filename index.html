@@ -32,8 +32,15 @@
         stroke-width: 100;
         margin: 20px 0px 40px;
         background: #cffffe;
-        background: linear-gradient(to top, rgba(207, 255, 254, 0.3), rgba(249, 247, 217, 0.3), rgba(252, 226, 206, 0.3), rgba(255, 193, 243, 0.3));
-        border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23cffffe' /%3E%3Cstop offset='25%25' stop-color='%23f9f7d9' /%3E%3Cstop offset='50%25' stop-color='%23fce2ce' /%3E%3Cstop offset='100%25' stop-color='%23ffc1f3' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3'/%3E %3C/svg%3E") 1;
+        background: linear-gradient(
+          to top,
+          rgba(207, 255, 254, 0.3),
+          rgba(249, 247, 217, 0.3),
+          rgba(252, 226, 206, 0.3),
+          rgba(255, 193, 243, 0.3)
+        );
+        border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='100' height='100' viewBox='0 0 100 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E %3ClinearGradient id='g' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23cffffe' /%3E%3Cstop offset='25%25' stop-color='%23f9f7d9' /%3E%3Cstop offset='50%25' stop-color='%23fce2ce' /%3E%3Cstop offset='100%25' stop-color='%23ffc1f3' /%3E%3C/linearGradient%3E %3Cpath d='M1.5 1.5 l97 0l0 97l-97 0 l0 -97' stroke-linecap='square' stroke='url(%23g)' stroke-width='3'/%3E %3C/svg%3E")
+          1;
       }
 
       .animated_name_ltr,
@@ -41,7 +48,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family:  "Lobster", cursive;
+        font-family: "Lobster", cursive;
         width: 90px;
         height: 80px;
         background: #92b901;
@@ -58,12 +65,14 @@
         -moz-animation: animated_name_ltr 5s ease-in-out 1s infinite;
         -webkit-animation: animated_name_ltr 5s ease-in-out 1s infinite;
         -o-animation: animated_name_ltr 5s ease-in-out 1s infinite;
+        animation-play-state: paused;
       }
       .animated_name_rtl {
         animation: animated_name_rtl 5s ease-in-out 1s infinite;
         -moz-animation: animated_name_rtl 5s ease-in-out 1s infinite;
         -webkit-animation: animated_name_rtl 5s ease-in-out 1s infinite;
         -o-animation: animated_name_rtl 5s ease-in-out 1s infinite;
+        animation-play-state: paused;
       }
 
       @keyframes animated_name_rtl {
@@ -260,13 +269,15 @@
       <form name="registrationForm" class="registrationForm">
         <div class="slidecontainer">
           <input type="range" min="1" max="100" value="30" class="slider" id="myRange" />
-          <p style="text-align: center; margin: 0px 0px 20px; color: red; font-size: 20px;">&#x2665;<span id="demo"></span>&#x2665;</p>
+          <p style="text-align: center; margin: 0px 0px 20px; color: red; font-size: 20px">&#x2665;<span id="demo"></span>&#x2665;</p>
         </div>
         <label class="switch">
-          <input type="checkbox" checked />
+          <input type="checkbox" />
           <span class="toggleSlider round"></span>
         </label>
       </form>
+     
+      <audio id="my_audio" src="./audio/Lovely music - BGM ( background music).mp3" loop="loop"></audio>
     </div>
 
     <script>
@@ -275,7 +286,7 @@
       const animatedNameLtr = document.querySelector(".animated_name_ltr");
       const animatedNameRtl = document.querySelector(".animated_name_rtl");
       const checkboxEl = document.querySelector(".switch input");
-
+      const audioMp3 = document.getElementById("my_audio");
       output.innerHTML = slider.value;
 
       slider.addEventListener("input", () => {
@@ -288,9 +299,11 @@
         if (checkboxEl.checked) {
           animatedNameLtr.style.animationPlayState = "running";
           animatedNameRtl.style.animationPlayState = "running";
+          audioMp3.play();
         } else {
           animatedNameLtr.style.animationPlayState = "paused";
           animatedNameRtl.style.animationPlayState = "paused";
+          audioMp3.pause();
         }
       });
     </script>
